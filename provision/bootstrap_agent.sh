@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 
 HOSTNAME=$(hostname)
 CE_VERSION="pc1"
