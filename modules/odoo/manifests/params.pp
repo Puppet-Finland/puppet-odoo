@@ -4,21 +4,21 @@
 
 class odoo::params {
   $odoo_repo_url     = 'https://github.com/odoo/odoo.git'
-  $branch            = 'master'
+  $branch            = '8.0'
   $config_path       = '/etc'
   $install_path      = '/opt/odoo'
   $service_status    = 'running'
-  $odoo_user         = 'odoo'
-  $odoo_group        = 'odoo'
+  $odoo_user         = 'demoer'
+  $odoo_group        = 'demoer'
   $odoo_repouser     = undef
   $git_sshkey        = undef
 
   $adminpass         = 'admin'
   $db_host           = '127.0.0.1'
   $db_port           = '5432'
-  $db_user           = 'odoo'
-  $db_password       = undef
-  $db_filter         = undef
+  $db_user           = 'demoer'
+  $db_password       = 'demoer'
+  $db_filter         = 'demoer'
 
   # email options
   $email_from        = undef
@@ -46,7 +46,7 @@ class odoo::params {
 
   case $::operatingsystem {
     'Ubuntu': {
-      $dependency_packages = ['python-dev','python-pip','libxml2-dev','libxslt1-dev','libevent-dev','libsasl2-dev','postgresql-server-dev-all','libldap2-dev','xfonts-base','xfonts-75dpi','xfonts-utils','libfontenc1','libxfont1','xfonts-encodings','fontconfig','libjpeg-turbo8','libfontconfig1','libjpeg-dev', 'libfontconfig1', 'libjpeg-turbo8', 'libxrender1', 'xfonts-base','xfonts-75dpi']
+      $dependency_packages = ['python-dev','python-pip','libxml2-dev','libxslt1-dev','libevent-dev','libsasl2-dev','postgresql-server-dev-all','libldap2-dev','xfonts-base','xfonts-75dpi','xfonts-utils','libfontenc1','libxfont1','xfonts-encodings','fontconfig','libfontconfig1','libjpeg-dev', 'libjpeg-turbo8', 'libxrender1']
     }
     default: {
       fail("${::operatingsystem} is not yet supported")

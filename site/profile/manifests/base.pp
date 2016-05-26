@@ -1,7 +1,7 @@
 class profile::base {
 
   include '::ntp'
-  # include git
+  include git
   class { 'timezone':
     region   => 'Europe',
     locality => 'Helsinki',

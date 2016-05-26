@@ -38,7 +38,7 @@ case $ARG in
 	vagrant digitalocean-list regions ${API_TOKEN}
 	;;
     sizes)
-	vagrant digitalocean-list regions ${API_TOKEN}
+	vagrant digitalocean-list sizes ${API_TOKEN}
 	;;
     *)
 	usage

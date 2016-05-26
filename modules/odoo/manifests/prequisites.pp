@@ -1,5 +1,8 @@
 # == Class: odoo::prequisites
 #
-class odoo::prequisites {
-  ensure_packages($odoo::dependency_packages)
+class odoo::prequisites inherits odoo::params {
+
+  package { $::odoo::params::dependency_packages:
+    ensure => installed,
+  }
 }

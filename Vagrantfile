@@ -8,6 +8,6 @@ Vagrant.configure('2') do |config|
     provider.token = '60f0f43fb2e92a3e826944f50cc9624b602f741a2a8991c1c77ac70f984e5060'
     provider.image = 'ubuntu-14-04-x64'
     provider.region = 'ams3'
-    provider.size = '512mb'
+    provider.size = '1gb'
   end
 end
