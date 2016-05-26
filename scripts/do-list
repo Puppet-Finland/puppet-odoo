@@ -1,0 +1,47 @@
+#!/bin/bash
+
+API_TOKEN=''
+ARG=$1
+
+usage() {
+
+    echo "Usage: $(basename $0) images | regions | sizes" 
+
+}
+
+if [[ $# -ne 1 ]]; then
+    usage
+    exit 1
+fi
+
+if [[  -f ./do_api_token ]]; then
+    API_TOKEN=$(cat ./do_api_token)
+else
+    echo "You must define your API_TOKEN"
+    exit 1
+fi
+
+if [[ -z  "${API_TOKEN}" ]]; then
+    echo "API_TOKEN must not be empty"
+    exit 1
+fi
+
+(which vagrant >/dev/null 2>&1) || (echo "You need to have vagrant installed" ; exit 1)
+(vagrant plugin list | grep -q vagrant-digitalocean) || (echo "You need to have vagrant digitalocean plugin installed" ; exit 1) 
+
+
+case $ARG in
+    images)
+	vagrant digitalocean-list -r images ${API_TOKEN}
+	;;
+    regions)
+	vagrant digitalocean-list regions ${API_TOKEN}
+	;;
+    sizes)
+	vagrant digitalocean-list regions ${API_TOKEN}
+	;;
+    *)
+	usage
+	exit 1
+	;;
+esac
