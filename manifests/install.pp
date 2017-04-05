@@ -2,33 +2,44 @@
 #
 # Full description of class odoo here.
 
-class odoo::install inherits odoo {
+class odoo::install inherits odoo::params {
+
   include stdlib
-  vcsrepo { $odoo::install_path:
+
+  vcsrepo { $::odoo::params::install_path:
     ensure   => present,
     provider => git,
-    source   => $odoo::odoo_repo_url,
-    revision => $odoo::branch,
-    identity => $odoo::gitsshkey,
-    user     => $odoo::odoo_repouser,
+    source   => $::odoo::params::odoo_repo_url,
+    revision => $::odoo::params::branch,
+    identity => $::odoo::params::gitsshkey,
+    user     => $::odoo::params::odoo_repouser,
+    timeout  => 6000 
   }
-  # install dependancy packages
-  if $odoo::manage_packages {
-    ensure_packages($odoo::dependency_packages)
+
+  ensure_packages($odoo::dependency_packages)
+
+  package { 'psycogreen':
+    ensure => installed,
+    version => $::odoo::params::psycogreen_version,
   }
+
   wget::fetch { 'wkhtmltox':
-    source      => 'http://download.gna.org/wkhtmltopdf/0.12/0.12.2.1/wkhtmltox-0.12.2.1_linux-trusty-amd64.deb',
-    destination => '/usr/local/src/wkhtmltox-0.12.2.1_linux-trusty-amd64.deb',
+    source      => $::odoo::params::wkhtmltox_source,
+    destination => '/tmp/wkhtmltox.deb',
+    unless      => 'test -f /tmp/wkhtmltox.deb',
     timeout     => 900,
   }
+
   package { 'wkhtmltox':
-    source   => '/usr/local/src/wkhtmltox-0.12.2.1_linux-trusty-amd64.deb',
+    source   => '/tmp/wkhtmltox.deb',
     provider => 'dpkg',
     require  => Wget::Fetch['wkhtmltox'],
   }
+  
   exec { 'odoo_pip_requirements_install':
     command => "/usr/bin/pip install -r ${odoo::install_path}/requirements.txt",
     require => Vcsrepo[$odoo::install_path],
     timeout => 900,
   }
+
 }

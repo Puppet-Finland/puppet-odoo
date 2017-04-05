@@ -4,7 +4,7 @@
 
 class odoo::params {
   $odoo_repo_url     = 'https://github.com/odoo/odoo.git'
-  $branch            = 'master'
+  $branch            = '10'
   $config_path       = '/etc'
   $install_path      = '/opt/odoo'
   $service_status    = 'running'
@@ -45,12 +45,46 @@ class odoo::params {
   $max_cron_threads  = 2
 
   case $::operatingsystem {
-    'Ubuntu': {
-      $dependency_packages = ['python-dev','python-pip','libxml2-dev','libxslt1-dev','libevent-dev','libsasl2-dev','postgresql-server-dev-all','libldap2-dev','xfonts-base','xfonts-75dpi','xfonts-utils','libfontenc1','libxfont1','xfonts-encodings','fontconfig','libjpeg-turbo8','libfontconfig1','libjpeg-dev']
+    'Debian': {
+      $dependency_packages = [
+        'ca-certificates',
+        'curl',
+        'node-less',
+        'python-gevent',
+        'python-pip',
+        'python-renderpm',
+        'python-support',
+        'python-watchdog',
+        'rubygems',
+        'git',
+        'python-dev',
+        'python-pip',
+        'libxml2-dev','libxslt1-dev',
+        'libevent-dev','libsasl2-dev',
+        'postgresql-server-dev-all',
+        'libldap2-dev',
+        'xfonts-base',
+        'xfonts-75dpi',
+        'xfonts-utils',
+        'libfontenc1',
+        'libxfont1',
+        'xfonts-encodings',
+        'fontconfig',
+        'libjpeg-turbo8',
+        'libfontconfig1',
+        'libjpeg-dev'
+      ]
+
+      $wkhtmltox_source = $http://nightly.odoo.com/extra/wkhtmltox-0.12.1.2_linux-jessie-amd64.deb
+      
     }
+
+
     default: {
       fail("${::operatingsystem} is not yet supported")
     }
   }
-  $manage_packages = true
+  
+
+
 }

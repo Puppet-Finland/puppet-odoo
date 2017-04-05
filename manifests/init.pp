@@ -94,12 +94,12 @@ class odoo (
   validate_string($odoo_user)
   validate_string($odoo_group)
 
-  contain 'odoo::install'
-  contain 'odoo::config'
-  contain 'odoo::service'
-
   Class ['odoo::install'] ->
   Class ['odoo::config'] ~>
   Class ['odoo::service']
+
+  contain 'odoo::install'
+  contain 'odoo::config'
+  contain 'odoo::service'
 
 }
