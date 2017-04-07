@@ -20,7 +20,7 @@ class odoo::install inherits odoo::params {
 
   package { 'psycogreen':
     ensure => $::odoo::params::psycogreen_version,
-    provide => pip,
+    provider => pip,
   }
 
   wget::fetch { 'wkhtmltox':
