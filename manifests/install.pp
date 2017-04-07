@@ -31,7 +31,7 @@ class odoo::install inherits odoo::params {
     source      => $::odoo::params::odoo_repo_url,
     revision    => $::odoo::params::branch,
     identity    => $::odoo::params::gitsshkey,
-    user        => $::odoo::params::odoo_repouser,
+    user        => $::odoo::params::odoo_user,
     depth       => '1',
     require     => File['Odoo base path'],
   }
