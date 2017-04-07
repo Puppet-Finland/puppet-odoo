@@ -14,7 +14,6 @@ class odoo::install inherits odoo::params {
     identity => $::odoo::params::gitsshkey,
     user     => $::odoo::params::odoo_repouser,
     depth    => '1',
-    timeout  => 6000 
   }
 
   ensure_packages($odoo::dependency_packages)
