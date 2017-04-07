@@ -88,7 +88,7 @@ class odoo::params {
       ]
 
       $wkhtmltox_source = 'http://nightly.odoo.com/extra/wkhtmltox-0.12.1.2_linux-jessie-amd64.deb'
-      $psyco_green_version = '1.0'
+      $psycogreen_version = '1.0'
       $odoo_version = '10.0'
       $odoo_release = '20170207'
       
