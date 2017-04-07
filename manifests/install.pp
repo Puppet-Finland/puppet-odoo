@@ -6,6 +6,13 @@ class odoo::install inherits odoo::params {
 
   include stdlib
 
+  file { 'Odoo base path':
+    ensure => directory,
+    path   => $::odoo::params::install_path
+    owner  => $::odoo::odoo_user,
+    mode   => '0644',
+  }
+
   vcsrepo { $::odoo::params::install_path:
     ensure   => present,
     provider => git,
@@ -14,13 +21,14 @@ class odoo::install inherits odoo::params {
     identity => $::odoo::params::gitsshkey,
     user     => $::odoo::params::odoo_repouser,
     depth    => '1',
+    require  => File['Odoo base path'],
   }
 
   ensure_packages($odoo::dependency_packages)
 
   package { 'psycogreen':
-    ensure => $::odoo::params::psycogreen_version,
-    provider => pip,
+    ensure      => $::odoo::params::psycogreen_version,
+    provider    => pip,
   }
 
   wget::fetch { 'wkhtmltox':
@@ -31,15 +39,15 @@ class odoo::install inherits odoo::params {
   }
 
   package { 'wkhtmltox':
-    source   => '/tmp/wkhtmltox.deb',
-    provider => 'dpkg',
-    require  => Wget::Fetch['wkhtmltox'],
+    source      => '/tmp/wkhtmltox.deb',
+    provider    => 'dpkg',
+    require     => Wget::Fetch['wkhtmltox'],
   }
   
   exec { 'odoo_pip_requirements_install':
-    command => "/usr/bin/pip install -r ${odoo::install_path}/requirements.txt",
-    require => Vcsrepo[$odoo::install_path],
-    timeout => 900,
+    command     => "/usr/bin/pip install -r ${odoo::install_path}/requirements.txt",
+    require     => Vcsrepo[$odoo::install_path],
+    timeout     => 900,
   }
 
 }
