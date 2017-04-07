@@ -8,7 +8,7 @@ class odoo::install inherits odoo::params {
 
   file { 'Odoo base path':
     ensure => directory,
-    path   => $::odoo::params::install_path
+    path   => $::odoo::params::install_path,
     owner  => $::odoo::odoo_user,
     mode   => '0644',
   }
