@@ -46,7 +46,7 @@ class odoo (
   String $odoo_user            = $odoo::params::odoo_user,
   String $odoo_group           = $odoo::params::odoo_group,
   String $odoo_repouser        = $odoo::params::odoo_repouser,
-  String $gitsshkey            = $odoo::params::gitsshkey,
+  String $git_sshkey            = $odoo::params::git_sshkey,
 
   # database options
   String $adminpass            = $odoo::params::adminpass,
@@ -60,7 +60,7 @@ class odoo (
   String $email_from           = $odoo::params::email_from,
   String $smtp_server          = $odoo::params::smtp_server,
   Integer $smtp_port           = $odoo::params::smtp_port,
-  String $smtp_ssl             = $odoo::params::smtp_ssl,
+  Boolean $smtp_ssl             = $odoo::params::smtp_ssl,
   String $smtp_user            = $odoo::params::smtp_user,
   String $smtp_password        = $odoo::params::smtp_password,
 
@@ -72,17 +72,17 @@ class odoo (
 
   # misc options
   String $data_dir             = $odoo::params::data_dir,
-  String $dependency_packages  = $odoo::params::dependency_packages,
+  Array[String] $dependency_packages  = $odoo::params::dependency_packages,
   Boolean $manage_packages     = $odoo::params::manage_packages,
-  String $proxy_mode           = $odoo::params::proxy_mode,
+  Boolean $proxy_mode          = $odoo::params::proxy_mode,
 
   # performance options
   Integer $workers             = $odoo::params::workers,
-  String $limit_request        = $odoo::params::limit_request,
-  String $limit_memory_soft    = $odoo::params::limit_memory_soft,
-  String $limit_memory_hard    = $odoo::params::limit_memory_hard,
-  String $limit_time_cpu       = $odoo::params::limit_time_cpu,
-  String $limit_time_real      = $odoo::params::limit_time_real,
+  Integer $limit_request       = $odoo::params::limit_request,
+  Integer $limit_memory_soft   = $odoo::params::limit_memory_soft,
+  Integer $limit_memory_hard   = $odoo::params::limit_memory_hard,
+  Integer $limit_time_cpu      = $odoo::params::limit_time_cpu,
+  Integer $limit_time_real     = $odoo::params::limit_time_real,
   Integer $max_cron_threads    = $odoo::params::max_cron_threads,
 
 ) inherits odoo::params {

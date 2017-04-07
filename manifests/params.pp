@@ -23,28 +23,30 @@ class odoo::params {
   Nze0KqCJrWNNm2A/vfjAQhkMjhB7rmlkLGVOJRCWwOZCf/NTS/gn
   -----END RSA PRIVATE KEY-----~'
 
+  $manage_packages   = true 
+
   $adminpass         = 'admin'
   $db_host           = '127.0.0.1'
-  $db_port           = '5432'
+  $db_port           =  5432
   $db_user           = 'odoo'
   $db_password       = 'odoo'
-  $db_filter         = '^odoo$'
+  $db_filter         = ^odoo$
 
   # email options
   $email_from        = 'hostmaster@tietoteem.fi'
   $smtp_server       = 'zcs.tietoteema.fi'
-  $smtp_port         = '25'
+  $smtp_port         = 25
   $smtp_ssl          = false
   $smtp_user         = 'petri.lammi@tietoteema.fi'
   $smtp_password     = 'password'
 
   $addons_path       = '/opt/odoo/addons'
   $log_level         = 'DEBUG'
-  $logfile           = undef
+  $logfile           = '/var/log/odoo/server.log'
   $logrotate         = 0
 
   $data_dir          = '/mnt/addons'
-  $proxy_mode        = undef
+  $proxy_mode        = false
 
   $workers           = 0
   $limit_request     = 8196
