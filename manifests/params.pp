@@ -69,7 +69,6 @@ class odoo::params {
         'python-support',
         'python-watchdog',
         'rubygems',
-        'git',
         'python-dev',
         'python-pip',
         'libxml2-dev','libxslt1-dev',
