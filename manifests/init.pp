@@ -33,7 +33,7 @@
 #
 # === Copyright
 #
-# Copyright 2015 Your name here, unless otherwise noted.
+# Copyright 2017 Your name here, unless otherwise noted.
 #
 class odoo (
 
@@ -54,7 +54,7 @@ class odoo (
   Integer $db_port             = $odoo::params::db_port,
   String $db_user              = $odoo::params::db_user,
   String $db_password          = $odoo::params::db_password,
-  Regexp $db_filter            = $odoo::params::db_filter,
+  String $db_filter            = $odoo::params::db_filter,
 
   # email options
   String $email_from           = $odoo::params::email_from,
