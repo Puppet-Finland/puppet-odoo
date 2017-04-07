@@ -4,7 +4,7 @@
 
 class odoo::service inherits odoo {
   case $::operatingsystem {
-    'Ubuntu': {
+    'Debian': {
       file { '/etc/init/odoo.conf' :
         owner   => 'root',
         group   => 'root',
@@ -18,7 +18,7 @@ class odoo::service inherits odoo {
         }
       }
     default: {
-      fail("${::operatingsystem} is not supported")
+      fail("${::operatingsystem} is not supported at this time")
       }
     }
   }
