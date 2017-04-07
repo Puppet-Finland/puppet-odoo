@@ -82,7 +82,7 @@ class odoo::params {
         'libxfont1',
         'xfonts-encodings',
         'fontconfig',
-        'libjpeg-turbo8',
+        'libjpeg62-turbo',
         'libfontconfig1',
         'libjpeg-dev'
       ]
