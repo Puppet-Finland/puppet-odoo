@@ -68,7 +68,7 @@ class odoo (
   String $addons_path          = $odoo::params::addons_path,
   String $logfile              = $odoo::params::logfile,
   String $log_level            = $odoo::params::log_level,
-  String $logrotate            = $odoo::params::logrotate,
+  Integer $logrotate            = $odoo::params::logrotate,
 
   # misc options
   String $data_dir             = $odoo::params::data_dir,
