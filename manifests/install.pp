@@ -19,8 +19,7 @@ class odoo::install inherits odoo::params {
   ensure_packages($odoo::dependency_packages)
 
   package { 'psycogreen':
-    ensure  => installed,
-    version => $::odoo::params::psycogreen_version,
+    ensure => $::odoo::params::psycogreen_version,
     provide => pip,
   }
 
