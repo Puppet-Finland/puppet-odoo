@@ -30,7 +30,7 @@ class odoo::params {
   $db_port           =  5432
   $db_user           = 'odoo'
   $db_password       = 'odoo'
-  $db_filter         = /^odoo$/
+  $db_filter         = '/^odoo$/'
 
   # email options
   $email_from        = 'hostmaster@tietoteem.fi'
