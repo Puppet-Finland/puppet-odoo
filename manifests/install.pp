@@ -13,6 +13,7 @@ class odoo::install inherits odoo::params {
     revision => $::odoo::params::branch,
     identity => $::odoo::params::gitsshkey,
     user     => $::odoo::params::odoo_repouser,
+    depth    => '1',
     timeout  => 6000 
   }
 

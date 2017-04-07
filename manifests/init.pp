@@ -39,7 +39,7 @@ class odoo (
 
   # install options
   String $odoo_repo_url        = $odoo::params::odoo_repo_url,
-  Float $branch                = $odoo::params::branch,
+  String $branch                = $odoo::params::branch,
   String $config_path          = $odoo::params::config_path,
   String $install_path         = $odoo::params::install_path,
   String $service_status       = $odoo::params::service_status,
