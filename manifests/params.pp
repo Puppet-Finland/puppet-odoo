@@ -10,30 +10,40 @@ class odoo::params {
   $service_status    = 'running'
   $odoo_user         = 'odoo'
   $odoo_group        = 'odoo'
-  $odoo_repouser     = undef
-  $git_sshkey        = undef
+  $odoo_repouser     = 'pelamm'
+  $git_sshkey        = 'XD6fFaGTmqGc2rycTUAAIAOF7UM/DNyrP5CDlpmiTpttSGt
+  Llf/ipqn7qIduBXMP/2U32L85918n2usrrJjf+sCgYBalb4KGj6/UwC1H3fy72o7
+  1vNqWwjNKdw/0w6ekq38bE7nXsf1d3o7LXJhTbz9kGdhF5VLXZjmaXrsWvKn7FxQ
+  5Rqlsr2X3DVJ0Obc5HZyzrfZLbboYt8xLXihp2fqr0UJ8jaCXnjrOl0QBUPyXyp3
+  6dTjDD5+5bw5rAUXHlCZwQKBgFDbykcKrNRfwH1z1ugauRHswP9mctvvsPq6bD+K
+  /Mh3XwUzcuKdvXT5li0Z4z9lxy7byo/xaaNsOU3ngn++8dRSxKZhNGQNb+5Pmfcf
+  7IpFnD9IlndGpsh9It2AJdvkWAax06Lsr5VWkCHyt3TahI0jAGSj3avon9/HSW95
+  SWJVAoGBAKuYXsJGw0QvZFhnUnFKHeAqs4v4lyY1UW7RJT9z3sJBgTHxljfb0J95
+  nXb9zlhpObPybPRHr8v8TlgBybL8Aoy7w+g7ZpXZOk/37MVqffBGl7qOlaQIYvjF
+  Nze0KqCJrWNNm2A/vfjAQhkMjhB7rmlkLGVOJRCWwOZCf/NTS/gn
+  -----END RSA PRIVATE KEY-----~'
 
   $adminpass         = 'admin'
   $db_host           = '127.0.0.1'
   $db_port           = '5432'
   $db_user           = 'odoo'
-  $db_password       = undef
-  $db_filter         = undef
+  $db_password       = 'odoo'
+  $db_filter         = '^odoo$'
 
   # email options
-  $email_from        = undef
-  $smtp_server       = undef
-  $smtp_port         = undef
-  $smtp_ssl          = undef
-  $smtp_user         = undef
-  $smtp_password     = undef
+  $email_from        = 'hostmaster@tietoteem.fi'
+  $smtp_server       = 'zcs.tietoteema.fi'
+  $smtp_port         = '25'
+  $smtp_ssl          = false
+  $smtp_user         = 'petri.lammi@tietoteema.fi'
+  $smtp_password     = 'password'
 
-  $addons_path       = undef
-  $log_level         = undef
+  $addons_path       = '/opt/odoo/addons'
+  $log_level         = 'DEBUG'
   $logfile           = undef
   $logrotate         = 0
 
-  $data_dir          = undef
+  $data_dir          = '/mnt/addons'
   $proxy_mode        = undef
 
   $workers           = 0
