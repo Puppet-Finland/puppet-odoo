@@ -1,0 +1,20 @@
+[Unit]
+Description=Advanced OpenSource ERP and CRM server
+Requires=postgresql.service
+After=postgresql.service
+
+[Service]
+Type=simple
+PermissionsStartOnly=true
+EnvironmentFile=-/etc/conf.d/openerp-server
+User=<% @odoo::params::odoo_user %>
+Group=<% @odoo::params::odoo:group %>
+SyslogIdentifier=odoo.tietoteema.com
+PIDFile=/run/odoo/server.pid
+ExecStartPre=/usr/bin/install -d -m755 -o <% @odoo::params::odoo_user %> -g <% @odoo::params::odoo_group %> /run/openerp
+ExecStart=/opt/odoo/openerp-server -c /etc/odoo.conf --unaccent --without-demo=True --no-database-list
+ExecStop=/bin/kill $MAINPID
+
+[Install]
+Alias=<% @alias %>.service
+WantedBy=multi-user.target
