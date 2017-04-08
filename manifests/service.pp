@@ -15,6 +15,13 @@ class odoo::service inherits odoo {
         subscribe => Service['odoo'],
       }
       
+      exec { 'odoo-systemd-reload':
+        command     => 'systemctl daemon-reload',
+        path        => [ '/usr/bin', '/bin', '/usr/sbin' ],
+        refreshonly => true,
+        require     => File['/etc/systemd/system/odoo.service'],
+      }
+
       service { 'odoo' :
         ensure  => $odoo::service_status,
         require => File['/etc/systemd/system/odoo.service'],
