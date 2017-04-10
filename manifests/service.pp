@@ -12,7 +12,6 @@ class odoo::service inherits odoo {
         group     => 'root',
         mode      => '0644',
         content   => template('odoo/odoo.service.erb'),
-        subscribe => Service['odoo'],
       }
       
       exec { 'odoo-systemd-reload':
@@ -24,7 +23,7 @@ class odoo::service inherits odoo {
 
       service { 'odoo' :
         ensure  => $odoo::service_status,
-        require => File['/etc/systemd/system/odoo.service'],
+        require => Exec['odoo-systemd-reload'],
       }
     }
 
