@@ -41,7 +41,7 @@ class odoo::params {
   $smtp_password     = 'password'
 
   $addons_path       = '/opt/odoo/addons'
-  $log_level         = 'DEBUG'
+  $log_level         = 'debug'
   $logfile           = '/var/log/odoo/server.log'
   $logrotate         = 0
 
@@ -85,6 +85,7 @@ class odoo::params {
         'libjpeg62-turbo',
         'libfontconfig1',
         'libjpeg-dev'
+        'libz-dev',
       ]
 
       $wkhtmltox_source = 'http://nightly.odoo.com/extra/wkhtmltox-0.12.1.2_linux-jessie-amd64.deb'
