@@ -9,5 +9,13 @@ class odoo::config inherits odoo::params {
     group   => $odoo::params::odoo_group,
     mode    => '0640',
     content => template('odoo/odoo.conf.erb'),
-    }
+  }
+
+  file { "$data_dir":
+    ensure => directory,
+    owner  => $odoo::params::odoo_user,
+    group  => $odoo::params::odoo_group,
+    mode   => '0640',
+  }
+
 }
