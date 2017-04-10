@@ -10,8 +10,8 @@ Type=simple
 PermissionsStartOnly=true
 EnvironmentFile=-/etc/conf.d/openerp-server
 SyslogIdentifier=odoo.tietoteema.com
-PIDFile=/run/odoo/server.pid
-ExecStartPre=/usr/bin/install -d -m755 -o "<%= scope['odoo::params::odoo_user'] %>" -g "<%= scope['odoo::params::odoo_group'] %>" /run/openerp
+PIDFile=/var/run/odoo/server.pid
+ExecStartPre=/usr/bin/install -d -m755 -o "<%= scope['odoo::params::odoo_user'] %>" -g "<%= scope['odoo::params::odoo_group'] %>" /var/run/odoo
 ExecStart=/opt/odoo/odoo-bin -c /etc/odoo.conf --unaccent --without-demo=True --no-database-list
 ExecStop=/bin/kill $MAINPID
 
