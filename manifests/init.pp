@@ -87,7 +87,6 @@ class odoo (
 
 ) inherits odoo::params {
 
-  # validates variable data types
   validate_absolute_path($config_path)
   validate_absolute_path($install_path)
   validate_string($service_status)

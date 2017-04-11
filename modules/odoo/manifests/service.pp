@@ -2,9 +2,10 @@
 #
 # Full description of class odoo here.
 
-class odoo::service inherits odoo {
+class odoo::service inherits odoo::params {
+
   case $::operatingsystem {
-    'Ubuntu': {
+    'Debian': {
       file { '/etc/init/odoo.conf' :
         owner   => 'root',
         group   => 'root',
