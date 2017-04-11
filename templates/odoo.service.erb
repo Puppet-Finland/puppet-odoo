@@ -1,14 +1,10 @@
 [Unit]
 Description=Advanced OpenSource ERP and CRM server
-Requires=postgresql.service
-After=postgresql.service
 
 [Service]
-User="<%= scope['odoo::params::odoo_user'] %>"
-Group="<%= scope['odoo::params::odoo_group'] %>"
+User=<%= scope['odoo::params::odoo_user'] %>
+Group=<%= scope['odoo::params::odoo_group'] %>
 Type=simple
-PermissionsStartOnly=true
-EnvironmentFile=-/etc/conf.d/openerp-server
 SyslogIdentifier=odoo
 PIDFile=/var/run/odoo/server.pid
 ExecStart=/opt/odoo/odoo-bin -c /etc/odoo.conf
