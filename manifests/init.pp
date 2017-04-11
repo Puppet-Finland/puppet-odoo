@@ -53,6 +53,7 @@ class odoo (
   String $db_host              = $odoo::params::db_host,
   Integer $db_port             = $odoo::params::db_port,
   String $db_user              = $odoo::params::db_user,
+  String $db_name              = $odoo::params::db_name,
   String $db_password          = $odoo::params::db_password,
   String $db_filter            = $odoo::params::db_filter,
 
@@ -67,6 +68,7 @@ class odoo (
   # log options
   String $addons_path          = $odoo::params::addons_path,
   String $logfile              = $odoo::params::logfile,
+  String $logdir               = $odoo::params::logfile,
   String $log_level            = $odoo::params::log_level,
   Integer $logrotate            = $odoo::params::logrotate,
 

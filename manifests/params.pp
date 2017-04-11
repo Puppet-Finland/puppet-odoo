@@ -30,6 +30,7 @@ class odoo::params {
   $db_port           =  5432
   $db_user           = 'odoo'
   $db_password       = 'odoo'
+  $db_name           = 'odoo'
   $db_filter         = '/^odoo$/'
 
   # email options
@@ -42,6 +43,7 @@ class odoo::params {
 
   $addons_path       = '/opt/odoo/addons'
   $log_level         = 'debug'
+  $logdir            = '/var/log/odoo'
   $logfile           = '/var/log/odoo/server.log'
   $logrotate         = 0
 
