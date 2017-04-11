@@ -12,7 +12,7 @@ class odoo::install inherits odoo::params {
     ensure     => present,
     managehome => true,
     name       => $::odoo::params::odoo_user,
-    require    => Group['Odoo group'] 
+    require    => Group[$::odoo::params::odoo_group] 
   }
   
   file { $::odoo::params::install_path:
