@@ -1,0 +1,10 @@
+<%= scope['odoo::params::odoo_executable'] %> \
+--init=all \
+--addons-path=<%= scope['odoo::params::odoo_addons_path'] %> \
+--stop-after-init \
+-r <%= scope['odoo::params::odoo_user'] %> \
+-w <%= scope['odoo::params::odoo_password'] %> \
+-d <%= scope['odoo::params::odoo_database'] %> \
+--without-demo=all \
+--load-language=<%= scope['odoo::params::languages'] %> \
+--db_host=User=<%= scope['odoo::params::db_host'] %>

@@ -6,7 +6,15 @@ db_port = <%= @db_port %>
 db_user = <%= @db_user %>
 db_name = <%= @db_name %>
 db_password = <%= @db_password %>
-
+<% if @list_db -%>
+list_db = <%= @list_db %>
+<% end -%>
+<% if @without_demo -%>
+without-demo = <%= @without_demo %>
+<% end -%>
+<% if @lang -%>
+lang = <%= @lang %>
+<% end -%>
 <% if @db_filter -%>
 db_filter = <%= @db_filter %>
 <% end -%>

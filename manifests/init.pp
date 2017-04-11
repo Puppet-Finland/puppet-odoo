@@ -56,6 +56,8 @@ class odoo (
   String $db_name              = $odoo::params::db_name,
   String $db_password          = $odoo::params::db_password,
   String $db_filter            = $odoo::params::db_filter,
+  String $list_db              = $odoo::params::list_db,
+  String $without_demo         = $odoo::params::without_demo,
 
   # email options
   String $email_from           = $odoo::params::email_from,
@@ -77,6 +79,7 @@ class odoo (
   Array[String] $dependency_packages  = $odoo::params::dependency_packages,
   Boolean $manage_packages     = $odoo::params::manage_packages,
   Boolean $proxy_mode          = $odoo::params::proxy_mode,
+  String $lang                 = $odoo::params::lang,
 
   # performance options
   Integer $workers             = $odoo::params::workers,

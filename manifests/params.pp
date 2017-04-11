@@ -32,8 +32,9 @@ class odoo::params {
   $db_password       = 'odoo'
   $db_name           = 'odoo'
   $db_filter         = '/^odoo$/'
-
-  # email options
+  $without_demo      = 'True'
+  $list_db           = 'False'
+  
   $email_from        = 'hostmaster@tietoteem.fi'
   $smtp_server       = 'zcs.tietoteema.fi'
   $smtp_port         = 25
@@ -50,6 +51,9 @@ class odoo::params {
   $data_dir          = '/mnt/addons'
   $proxy_mode        = false
 
+  # comma separeted list
+  $lang              = 'fi_FI'
+  
   $workers           = 0
   $limit_request     = 8196
   $limit_memory_soft = 671088640 # ~640MB
