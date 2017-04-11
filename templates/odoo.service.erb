@@ -11,7 +11,6 @@ PermissionsStartOnly=true
 EnvironmentFile=-/etc/conf.d/openerp-server
 SyslogIdentifier=odoo
 PIDFile=/var/run/odoo/server.pid
-ExecStartPre=/usr/bin/install -d -m755 -o "<%= scope['odoo::params::odoo_user'] %>" -g "<%= scope['odoo::params::odoo_group'] %>" /var/run/odoo
 ExecStart=/opt/odoo/odoo-bin -c /etc/odoo.conf
 ExecStop=/bin/kill $MAINPID
 
