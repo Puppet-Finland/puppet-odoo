@@ -42,18 +42,20 @@ class odoo::params {
   $smtp_user         = 'petri.lammi@tietoteema.fi'
   $smtp_password     = 'password'
 
-  $addons_path       = '/opt/odoo/addons'
+  $addons_path       = $install_path/addons,$install_path/odoo/addons"
   $log_level         = 'debug'
   $logdir            = '/var/log/odoo'
   $logfile           = '/var/log/odoo/server.log'
   $logrotate         = 0
 
-  $data_dir          = '/mnt/addons'
+  $data_dir          = '/data'
   $proxy_mode        = false
 
   # comma separeted list
   $lang              = 'fi_FI'
   
+  $scripts           = [ 'initdb' ] 
+
   $workers           = 0
   $limit_request     = 8196
   $limit_memory_soft = 671088640 # ~640MB
