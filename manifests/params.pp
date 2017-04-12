@@ -42,7 +42,7 @@ class odoo::params {
   $smtp_user         = 'petri.lammi@tietoteema.fi'
   $smtp_password     = 'password'
 
-  $addons_path       = $install_path/addons,$install_path/odoo/addons"
+  $addons_path       = "$install_path/addons,$install_path/odoo/addons"
   $log_level         = 'debug'
   $logdir            = '/var/log/odoo'
   $logfile           = '/var/log/odoo/server.log'
