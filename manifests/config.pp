@@ -48,4 +48,11 @@ class odoo::config inherits odoo::params {
     mode   => '0600',
   }
 
+  file { $odoo::params::logdir:
+    ensure => directory,
+    owner  => $odoo::params::odoo_user,
+    group  => $odoo::params::odoo_group,
+    mode   => '0600',
+  }
+
 }
