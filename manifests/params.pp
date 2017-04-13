@@ -47,7 +47,7 @@ class odoo::params {
   $home_path         = '/home'
   $log_level         = 'debug'
   $logdir            = '/var/log/odoo'
-  $logfile           = "${logdir}server.log"
+  $logfile           = "${logdir}/server.log"
   $logrotate         = 0
 
   $data_dir          = '/data'
