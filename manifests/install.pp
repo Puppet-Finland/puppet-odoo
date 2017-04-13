@@ -12,28 +12,34 @@ class odoo::install inherits odoo::params {
     ensure => directory,
   }
 
+  file { "${::odoo::params::home_path}/${::odoo::params::odoo_user}":
+    ensure      => directory,
+    require     => File[$::odoo::params::home_path],
+  }    
+
   user { $::odoo::params::odoo_user:
-    ensure     => present,
-    home       => "${::odoo::params::home_path}/${::odoo::params::odoo_user}",
-    require    => [
+    ensure      => present,
+    home        => "${::odoo::params::home_path}/${::odoo::params::odoo_user}",
+    require     => [
       Group[$::odoo::params::odoo_group],
-      File[$::odoo::params::home_path],
+      File["${::odoo::params::home_path}/${::odoo::params::odoo_user}"],
     ]
   }
   
+  # for future use
   file { "${::odoo::params::home_path}/${::odoo::params::odoo_user}/.pgpass":
-    ensure  => present,
-    owner   => $::odoo::params::odoo_user,
-    group   => $::odoo::params::odoo_group,
-    mode    => '0600',
-    content => template("odoo/pgpass.erb"),
-    require => user[$::odoo::params::odoo_user], 
+    ensure      => present,
+    owner       => $::odoo::params::odoo_user,
+    group       => $::odoo::params::odoo_group,
+    mode        => '0600',
+    content     => template("odoo/pgpass.erb"),
+    require     => User[$::odoo::params::odoo_user], 
   }
 
   file { $::odoo::params::install_path:
     ensure      => directory,
     owner       => $::odoo::params::odoo_user,
-    mode        => '0644',
+    mode        => '0764',
     require     => User[$::odoo::params::odoo_user] 
   }
 
@@ -46,7 +52,7 @@ class odoo::install inherits odoo::params {
     user        => $::odoo::params::odoo_user,
     depth       => '1',
     require     => File[$::odoo::params::install_path],
-  }
+    }
 
   ensure_packages($odoo::params::dependency_packages)
 

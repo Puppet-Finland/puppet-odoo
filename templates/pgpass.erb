@@ -1,2 +1,3 @@
 # hostname:port:database:username:password 
-${::odoo::params::db_host}:${::odoo::params::db_port}:${::odoo::params::db_name}:${::odoo::params::db_user}:${::odoo::params::db_password}
+<%= scope['::odoo::params::db_host'] %>:<%= scope['::odoo::params::db_port'] %>:<%= scope['::odoo::params::db_name'] %>:<%= scope['::odoo::params::db_user'] %>:<%= scope['::odoo::params::db_password'] %>
+

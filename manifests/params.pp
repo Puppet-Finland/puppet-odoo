@@ -57,7 +57,7 @@ class odoo::params {
   $lang              = 'fi_FI'
   
   $script_path       = '/opt/bin'
-  $scripts           = [ 'initdb' ] 
+  $scripts           = [ 'initdb', 'testdb' ] 
 
   $workers           = 0
   $limit_request     = 8196
