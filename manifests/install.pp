@@ -4,6 +4,25 @@ class odoo::install inherits odoo::params {
 
   include stdlib
 
+  # Do not use pip from packages
+  # see https://bugs.launchpad.net/fuel/+bug/1547048
+  package { 'python-pip':
+    ensure => 'absent',
+  }
+
+  package { 'python-setuptools':
+    ensure => 'present',
+  }
+
+  exec { 'install-pip':
+    command => '/usr/bin/easy_install pip',
+    creates => '/usr/local/bin/pip',
+    require => [
+      Package['python-pip'],
+      Package['python-setuptools'],
+    ]
+  }
+  
   group { $::odoo::params::odoo_group:
     ensure      => present,
   }
@@ -75,7 +94,7 @@ class odoo::install inherits odoo::params {
   }
   
   exec { 'odoo_pip_requirements_install':
-    command     => "/usr/bin/pip install -r ${::odoo::params::install_path}/requirements.txt",
+    command     => "/usr/local/bin/pip install -r ${::odoo::params::install_path}/requirements.txt",
     require     => Vcsrepo[$odoo::params::install_path],
     timeout     => 900,
   }
