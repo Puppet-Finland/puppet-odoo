@@ -8,18 +8,33 @@ class odoo::install inherits odoo::params {
     ensure      => present,
   }
 
+  file { $::odoo::params::home_path:
+    ensure => directory,
+  }
+
   user { $::odoo::params::odoo_user:
     ensure     => present,
-    managehome => true,
-    name       => $::odoo::params::odoo_user,
-    require    => Group[$::odoo::params::odoo_group] 
+    home       => "${::odoo::params::home_path}/${::odoo::params::odoo_user}",
+    require    => [
+      Group[$::odoo::params::odoo_group],
+      File[$::odoo::params::home_path],
+    ]
   }
   
+  file { "${::odoo::params::home_path}/${::odoo::params::odoo_user}/.pgpass":
+    ensure  => present,
+    owner   => $::odoo::params::odoo_user,
+    group   => $::odoo::params::odoo_group,
+    mode    => '0600',
+    content => template("odoo/pgpass.erb"),
+    require => user[$::odoo::params::odoo_user], 
+  }
+
   file { $::odoo::params::install_path:
     ensure      => directory,
     owner       => $::odoo::params::odoo_user,
     mode        => '0644',
-    require => User[$::odoo::params::odoo_user] 
+    require     => User[$::odoo::params::odoo_user] 
   }
 
   vcsrepo { $::odoo::params::install_path:

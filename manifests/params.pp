@@ -31,7 +31,7 @@ class odoo::params {
   $db_user           = 'odoo'
   $db_password       = 'odoo'
   $db_name           = 'odoo'
-  $db_filter         = '/^odoo$/'
+  $db_filter         = "/^${db_name}$/"
   $without_demo      = 'True'
   $list_db           = 'False'
   
@@ -42,10 +42,12 @@ class odoo::params {
   $smtp_user         = 'petri.lammi@tietoteema.fi'
   $smtp_password     = 'password'
 
-  $addons_path       = "$install_path/addons,$install_path/odoo/addons"
+  $addons_path       = "${install_path}/addons,${install_path}/odoo/addons"
+  $odoo_executable   = "${install_path}/odoo-bin"
+  $home_path         = '/home'
   $log_level         = 'debug'
   $logdir            = '/var/log/odoo'
-  $logfile           = '/var/log/odoo/server.log'
+  $logfile           = "${logdir}server.log"
   $logrotate         = 0
 
   $data_dir          = '/data'
