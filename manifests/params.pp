@@ -54,6 +54,7 @@ class odoo::params {
   # comma separeted list
   $lang              = 'fi_FI'
   
+  $script_path       = '/opt/bin'
   $scripts           = [ 'initdb' ] 
 
   $workers           = 0
