@@ -1,0 +1,24 @@
+#!/usr/bin/env python
+
+import psycopg2
+
+db_name = '<%= scope['odoo::params::db_name'] %>'
+db_user = '<%= scope['odoo::params::db_user'] %>'
+db_host = '<%= scope['odoo::params::db_host'] %>'
+db_password = '<%= scope['odoo::params::db_password'] %>'
+
+conn_string = "dbname={0} user={1} host={2} password={3}".format(db_name, db_user, db_host, db_password)
+
+query = """select * from res_partner"""
+
+try:
+    con = psycopg2.connect(conn_string)
+except:
+    exit(1)
+try:
+    cur = con.cursor()
+    cur.execute(query)
+except:
+    exit(1)
+
+exit(0)
