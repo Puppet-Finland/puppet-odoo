@@ -6,7 +6,7 @@
 class odoo::config inherits odoo::params {
 
   file { "${::odoo::params::config_path}/odoo.conf":
-    owner   => $odoo::params::odoo_user,
+    owner   => 'root',
     group   => $odoo::params::odoo_group,
     mode    => '0640',
     content => template('odoo/odoo.conf.erb'),
@@ -31,13 +31,12 @@ class odoo::config inherits odoo::params {
     }
   }
 
-  exec { "initialize_${$::odoo::params::db_name}":
+  exec { "initialize_db_${$::odoo::params::db_name}":
     command     => "${::odoo::params::script_path}/initdb",
     path        => [ '/usr/bin', '/bin', '/usr/sbin' ],
-    user        => $odoo::params::odoo_user,
+    user        => 'root',
     group       => $odoo::params::odoo_group, 
-    refreshonly => true,
-    unless      => "${::odoo::params::script_path}/testdb", 
+    #unless      => "${::odoo::params::script_path}/testdb", 
     require     => File["${::odoo::params::script_path}/testdb"],
   }
 

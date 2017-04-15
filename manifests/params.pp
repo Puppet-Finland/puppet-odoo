@@ -25,13 +25,13 @@ class odoo::params {
 
   $manage_packages   = true 
 
-  $adminpass         = 'admin'
+  $admin_password    = 'admin'
   $db_host           = '127.0.0.1'
   $db_port           =  5432
   $db_user           = 'odoo'
   $db_password       = 'odoo'
   $db_name           = 'odoo'
-  $db_filter         = "/^${db_name}$/"
+  $db_filter         = "${db_name}\$"
   $without_demo      = 'True'
   $list_db           = 'False'
   

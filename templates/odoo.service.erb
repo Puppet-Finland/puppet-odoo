@@ -7,7 +7,7 @@ Group=<%= scope['odoo::params::odoo_group'] %>
 Type=simple
 SyslogIdentifier=odoo
 PIDFile=/var/run/odoo/server.pid
-ExecStart=/opt/odoo/odoo-bin -c /etc/odoo.conf --no-database-list
+ExecStart=/opt/odoo/odoo-bin -c /etc/odoo.conf --no-database-list --db-filter=<%= scope['odoo::params::db_filter'] %>
 ExecStop=/bin/kill $MAINPID
 
 [Install]
