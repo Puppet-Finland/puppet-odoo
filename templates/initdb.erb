@@ -8,5 +8,6 @@
 --without-demo=all \
 --load-language=<%= scope['odoo::params::lang'] %> \
 --db_host=<%= scope['odoo::params::db_host'] %> \
---no-database-list > /tmp/initdb.log 2>&1
+--no-database-list 2>&1 | logger -t $(basename $0)
+
 
