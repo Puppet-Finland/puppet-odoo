@@ -66,7 +66,7 @@ class odoo::install inherits odoo::params {
     ensure      => present,
     provider    => git,
     source      => $::odoo::params::odoo_repo_url,
-    revision    => $::odoo::params::version,
+    revision    => $::odoo::params::branch,
     identity    => $::odoo::params::gitsshkey,
     user        => $::odoo::params::odoo_user,
     depth       => '1',
