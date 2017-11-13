@@ -96,7 +96,8 @@ class odoo::params {
         'libjpeg62-turbo',
         'libfontconfig1',
         'libjpeg-dev',
-        'libz-dev'
+        'libz-dev',
+        'build-essential',
       ]
 
       $wkhtmltox_source = 'http://nightly.odoo.com/extra/wkhtmltox-0.12.1.2_linux-jessie-amd64.deb'
