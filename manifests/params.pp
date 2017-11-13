@@ -99,6 +99,7 @@ class odoo::params {
         'libz-dev',
         'build-essential',
         'apt-transport-https',
+        'libxrender1'
       ]
 
       $wkhtmltox_source = 'http://nightly.odoo.com/extra/wkhtmltox-0.12.1.2_linux-jessie-amd64.deb'
