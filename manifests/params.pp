@@ -4,7 +4,7 @@
 
 class odoo::params {
   $odoo_repo_url     = 'https://github.com/odoo/odoo.git'
-  $branch            = '10'
+  $branch            = '10.0'
   $config_path       = '/etc'
   $install_path      = '/opt/odoo'
   $service_status    = 'running'
@@ -98,6 +98,7 @@ class odoo::params {
         'libjpeg-dev',
         'libz-dev',
         'build-essential',
+        'apt-transport-https',
       ]
 
       $wkhtmltox_source = 'http://nightly.odoo.com/extra/wkhtmltox-0.12.1.2_linux-jessie-amd64.deb'
