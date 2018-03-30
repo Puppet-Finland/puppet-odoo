@@ -1,68 +1,121 @@
 define odoo::instance (
   
+  String $basedir,
   Integer $port,
   String $username,
   String $groupname,
   String $sitename,
-  $template='/vagrant/modules/odoo/templates/odoo.conf.erb',
+  String $Branch,
   
-  ) {
+)
+{
   
-  include nginx
   include odoo::params
   
-  file {'/opt/odoo':
+  # Do not use pip from packages
+  # see https://bugs.launchpad.net/fuel/+bug/1547048
+  package { 'python-pip':
+    ensure => 'absent',
+  }
+
+  package { 'python-setuptools':
+    ensure => 'present',
+  }
+
+  exec { 'install-pip':
+    command => '/usr/bin/easy_install pip',
+    creates => '/usr/local/bin/pip',
+    require => [
+      Package['python-pip'],
+      Package['python-setuptools'],
+    ]
+  }
+
+   file { $basedir:
     owner  => 'root',
     group  => 'root',
     mode   => '0777',
     ensure => directory,
   }
   
-  file { "/opt/odoo/${name}":
+  file { "${basedir}/${title}":
     owner   => $username,
     group   => $groupname,
     mode    => '0777',
-    require => File['/opt/odoo'],
+    require => File[$basedir],
+  }
+
+  file { "$basedir/${title}/bin":
+    ensure => directory,
+    owner   => $sername,
+    group   => $groupname,
+    mode    => '0600',
+  }
+
+  group { $groupname:
+    ensure => present,
   }
   
-  file { "/opt/odoo/${name}/.openerp-serverrc":
-    content => template($template),
+  user { $username:
+    ensure  => present,
+    home    => "$basedir/${title}",
+    require => [
+      Group[$groupname],
+      File["$basedir/${title}"],
+    ]
+  }
+
+  $scripts = $::odoo::params::scripts
+
+  $scripts.each |$script| {
+    file { "$basedir/${title}/bin/${script}":
+      owner   => $user,
+      group   => $group,
+      mode    => '0700',
+      content => template("odoo/${script}.erb"),
+      require => File["$basedir/${title}/bin"],
+    }
+  }
+
+  file { "/opt/odoo/${title}/.openerp-serverrc":
     owner   => $username,
     group   => $groupname,
     mode    => '0777',
-    require => File["/opt/odoo/${name}"],
+    content => template('odoo/odoo.conf.erb'),
+    require => File["$basedir/${title}"],
   }
   
-  vcsrepo { "/opt/odoo/${name}":
+  vcsrepo { "$basedir/${title}":
     ensure   => present,
     provider => git,
     source   => 'https://github.com/odoo/odoo.git',
-    revision => '8.0',
+    revision => $branch,
     user     => 'root',
-    require  => File['/opt/odoo'],
+    depth    => '1',
+    require  => File[$basedir],
   }
   
   wget::fetch { 'wkhtmltox':
     source      => 'http://download.gna.org/wkhtmltopdf/0.12/0.12.2.1/wkhtmltox-0.12.2.1_linux-trusty-amd64.deb',
-    destination => '/tmp/wkhtmltox-0.12.2.1_linux-trusty-amd64.deb',
+    destination => '/tmp/wkhtmltox.deb',
     timeout     => 900,
   }
   
   package { 'wkhtmltox':
-    source   => '/tmp/wkhtmltox-0.12.2.1_linux-trusty-amd64.deb',
+    source   => '/tmp/wkhtmltox.deb',
     provider => 'dpkg',
     require  => Wget::Fetch['wkhtmltox'],
   }
   
   exec { 'odoo_pip_requirements_install':
     command => "/usr/bin/pip install -r /opt/odoo/${name}/requirements.txt",
-    require => Vcsrepo["/opt/odoo/${name}"],
+    require => Vcsrepo["/opt/odoo/${title}"],
     timeout => 900,
   }
   
   user { "${username}":
     ensure  => 'present',
-    home    => "/opt/odoo/${name}",
+    home    => "$basedir/${title}",
     groups  => "${groupname}",
     shell   => '/bin/bash',
     require => Group["${groupname}"],
@@ -72,18 +125,22 @@ define odoo::instance (
     ensure => 'present',
   }
 
-  exec { "odoo_db_init_${name}":
-    command => "/opt/odoo/${name}/openerp-server --init=all --addons-path=/opt/odoo/${name}/addons --stop-after-init -r ${username} -w ${username} -d ${username} --without-demo=True --timezone=\"Europe/Helsinki\" --no-database-list --load-language=\"fi_FI\"  --db-filter=${name}",
-    require => Exec['odoo_pip_requirements_install'],
-    user => "${username}",
-    timeout => 900,
-  }
-  
+  ensure_packages($odoo::params::dependency_packages)
+
   postgresql::server::db { "${username}":
     user     => "${username}",
     password => postgresql_password("${username}", "${username}"),
-    before => Exec["odoo_db_init_${name}"],
+    before   => Exec["Initialize ${title} database"],
   }
+
+  exec { "Initialize ${title} database":
+    command => "${basename}/initdb",
+    path    => [ '/usr/bin', '/bin', '/usr/sbin' '/usr/local/bin' ],
+    user    => 'root',
+    unless  => "${basedir}/testdb", 
+    require => File["${basedir}/testdb"],
+  }
+
 
 }
   
