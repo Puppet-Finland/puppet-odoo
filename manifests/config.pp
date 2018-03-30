@@ -36,7 +36,7 @@ class odoo::config inherits odoo::params {
     path        => [ '/usr/bin', '/bin', '/usr/sbin' ],
     user        => 'root',
     group       => $odoo::params::odoo_group, 
-    #unless      => "${::odoo::params::script_path}/testdb", 
+    unless      => "${::odoo::params::script_path}/testdb", 
     require     => File["${::odoo::params::script_path}/testdb"],
   }
 
