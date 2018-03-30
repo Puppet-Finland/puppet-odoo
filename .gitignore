@@ -1,0 +1,30 @@
+## Logs
+*.log
+
+## MAC OS
+.DS_Store
+
+## TEXTMATE
+*.tmproj
+tmtags
+
+## EMACS
+*~
+\#*
+.\#*
+
+## VIM
+*.swp
+tags
+
+## RUBYMINE
+.idea
+
+pkg/
+_build
+.tmp/
+.librarian/
+Puppetfile.lock
+modules/*
+.ruby-*
+Gemfile.lock
