@@ -4,7 +4,7 @@
 
 class odoo::params {
   $odoo_repo_url     = 'https://github.com/odoo/odoo.git'
-  $branch            = '10.0'
+  $branch            = '11.0'
   $config_path       = '/etc'
   $install_path      = '/opt/odoo'
   $service_status    = 'running'
