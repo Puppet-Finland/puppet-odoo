@@ -8,12 +8,12 @@ class odoo::service inherits odoo {
     'Debian': {
 
       file { '/etc/systemd/system/odoo.service' :
-        owner     => 'root',
-        group     => 'root',
-        mode      => '0644',
-        content   => template('odoo/odoo.service.erb'),
+        owner   => 'root',
+        group   => 'root',
+        mode    => '0644',
+        content => template('odoo/odoo.service.erb'),
       }
-      
+
       exec { 'odoo-systemd-reload':
         command     => 'systemctl daemon-reload',
         path        => [ '/usr/bin', '/bin', '/usr/sbin' ],

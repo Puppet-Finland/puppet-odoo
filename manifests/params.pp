@@ -22,9 +22,7 @@ class odoo::params {
   nXb9zlhpObPybPRHr8v8TlgBybL8Aoy7w+g7ZpXZOk/37MVqffBGl7qOlaQIYvjF
   Nze0KqCJrWNNm2A/vfjAQhkMjhB7rmlkLGVOJRCWwOZCf/NTS/gn
   -----END RSA PRIVATE KEY-----~'
-
-  $manage_packages   = true 
-
+  $manage_packages   = true
   $admin_password    = 'admin'
   $db_host           = '127.0.0.1'
   $db_port           =  5432
@@ -34,7 +32,6 @@ class odoo::params {
   $db_filter         = "${db_name}\$"
   $without_demo      = 'True'
   $list_db           = 'False'
-  
   $email_from        = 'hostmaster@tietoteem.fi'
   $smtp_server       = 'zcs.tietoteema.fi'
   $smtp_port         = 25
@@ -55,10 +52,8 @@ class odoo::params {
 
   # comma separeted list
   $lang              = 'fi_FI'
-  
   $script_path       = '/opt/bin'
-  $scripts           = [ 'initdb', 'testdb' ] 
-
+  $scripts           = [ 'initdb', 'testdb' ]
   $workers           = 0
   $limit_request     = 8196
   $limit_memory_soft = 671088640 # ~640MB
@@ -106,12 +101,10 @@ class odoo::params {
       $psycogreen_version = '1.0'
       $odoo_version = '10.0'
       $odoo_release = '20170207'
-      
     }
 
     default: {
       fail("${::operatingsystem} is not yet supported")
     }
   }
-  
 }

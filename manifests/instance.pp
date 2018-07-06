@@ -47,9 +47,9 @@ define odoo::instance (
 
   file { "$basedir/${title}/bin":
     ensure => directory,
-    owner   => $sername,
-    group   => $groupname,
-    mode    => '0600',
+    owner  => $sername,
+    group  => $groupname,
+    mode   => '0600',
   }
 
   group { $groupname:

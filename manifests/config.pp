@@ -14,13 +14,13 @@ class odoo::config inherits odoo::params {
 
   file { $::odoo::params::script_path:
     ensure => directory,
-    owner   => $odoo::params::odoo_user,
-    group   => $odoo::params::odoo_group,
-    mode    => '0600',
+    owner  => $odoo::params::odoo_user,
+    group  => $odoo::params::odoo_group,
+    mode   => '0600',
   }
 
   $scripts = $::odoo::params::scripts
-  
+
   $scripts.each |$script| {
     file { "${::odoo::params::script_path}/${script}":
       owner   => $odoo::params::odoo_user,
@@ -32,12 +32,12 @@ class odoo::config inherits odoo::params {
   }
 
   exec { "initialize_db_${$::odoo::params::db_name}":
-    command     => "${::odoo::params::script_path}/initdb",
-    path        => [ '/usr/bin', '/bin', '/usr/sbin' ],
-    user        => 'root',
-    group       => $odoo::params::odoo_group, 
-    unless      => "${::odoo::params::script_path}/testdb", 
-    require     => File["${::odoo::params::script_path}/testdb"],
+    command => "${::odoo::params::script_path}/initdb",
+    path    => [ '/usr/bin', '/bin', '/usr/sbin' ],
+    user    => 'root',
+    group   => $odoo::params::odoo_group,
+    unless  => "${::odoo::params::script_path}/testdb",
+    require => File["${::odoo::params::script_path}/testdb"],
   }
 
   file { $odoo::params::data_dir:

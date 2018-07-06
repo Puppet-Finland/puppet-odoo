@@ -98,9 +98,7 @@ class odoo (
   validate_string($odoo_user)
   validate_string($odoo_group)
 
-  Class['::odoo::install'] ->
-  Class['::odoo::config'] ->
-  Class['::odoo::service']
+  Class['::odoo::install'] -> Class['::odoo::config'] -> Class['::odoo::service']
 
   contain '::odoo::install'
   contain '::odoo::config'
