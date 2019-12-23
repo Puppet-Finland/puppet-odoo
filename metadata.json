@@ -1,5 +1,5 @@
 {
-  "name": "tietoteema-odoo",
+  "name": "puppet-odoo",
   "version": "0.1.0",
   "author": "Petri Lammi",
   "summary": "Install Odoo from source.",

@@ -1,8 +1,11 @@
 # == Class: odoo::params
 #
-# Full description of class odoo here.
+# Private class
 
 class odoo::params {
+
+  assert_private()
+
   $odoo_repo_url     = 'https://github.com/odoo/odoo.git'
   $branch            = '11.0'
   $config_path       = '/etc'

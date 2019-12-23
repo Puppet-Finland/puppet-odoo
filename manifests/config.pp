@@ -1,10 +1,12 @@
 #
 # == Class: odoo::config
 #
-# Full description of class odoo here.
+# Private class
 
 class odoo::config inherits odoo::params {
 
+  assert_private()
+  
   file { "${::odoo::params::config_path}/odoo.conf":
     owner   => 'root',
     group   => $odoo::params::odoo_group,
