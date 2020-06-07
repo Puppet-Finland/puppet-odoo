@@ -1,67 +1,58 @@
-odoo_repo_url: 'https://github.com/odoo/odoo.git'
-branch: '11.0'
-config_path: '/etc'
-install_path: '/opt/odoo'
-service_status: running
-odoo_user: odoo
-odoo_group: odoo
-odoo_repouser: pelamm
-git_sshkey: >
-  XD6fFaGTmqGc2rycTUAAIAOF7UM/DNyrP5CDlpmiTpttSGt
-  Llf/ipqn7qIduBXMP/2U32L85918n2usrrJjf+sCgYBalb4KGj6/UwC1H3fy72o7
-  1vNqWwjNKdw/0w6ekq38bE7nXsf1d3o7LXJhTbz9kGdhF5VLXZjmaXrsWvKn7FxQ
-  5Rqlsr2X3DVJ0Obc5HZyzrfZLbboYt8xLXihp2fqr0UJ8jaCXnjrOl0QBUPyXyp3
-  6dTjDD5+5bw5rAUXHlCZwQKBgFDbykcKrNRfwH1z1ugauRHswP9mctvvsPq6bD+K
-  /Mh3XwUzcuKdvXT5li0Z4z9lxy7byo/xaaNsOU3ngn++8dRSxKZhNGQNb+5Pmfcf
-  7IpFnD9IlndGpsh9It2AJdvkWAax06Lsr5VWkCHyt3TahI0jAGSj3avon9/HSW95
-  SWJVAoGBAKuYXsJGw0QvZFhnUnFKHeAqs4v4lyY1UW7RJT9z3sJBgTHxljfb0J95
-  nXb9zlhpObPybPRHr8v8TlgBybL8Aoy7w+g7ZpXZOk/37MVqffBGl7qOlaQIYvjF
-  Nze0KqCJrWNNm2A/vfjAQhkMjhB7rmlkLGVOJRCWwOZCf/NTS/gn
-  -----END RSA PRIVATE KEY-----
-manage_packages: true 
-admin_password: admin
-db_host: 127.0.0.1
-db_port: 5432
-db_user: odoo
-db_password: odoo
-db_name: odoo
-db_filter: '${db_name}\$'
-without_demo: True
-list_db: False
+odoo::odoo_version: '13.0'
+odoo::odoo_repo_url: 'https://github.com/odoo/odoo.git'
+odoo::branch: '13.0'
+odoo::config_path: '/etc'
+odoo::install_path: '/opt/odoo'
+odoo::service_status: running
+odoo::odoo_user: odoo
+odoo::odoo_group: odoo
+odoo::odoo_repouser: johndoe
+odoo::manage_packages: true 
+odoo::admin_password: changeme
+odoo::db_host: 127.0.0.1
+odoo::db_port: 5432
+odoo::db_user: odoo
+odoo::db_password: odoo
+odoo::db_name: odoo
+odoo::db_filter: "%{lookup('odoo::db_name')}\\$"
+odoo::without_demo: True
+odoo::listdb: False
 
-email_from: hostmaster@tietoteem.fi
-smtp_server: zcs.tietoteema.fi
-smtp_port: 25
-smtp_ssl: false
-smtp_user: petri.lammi@tietoteema.fi
-smtp_password: password
+odoo::email_from: ''
+odoo::smtp_server: ''
+odoo::smtp_port: 25
+odoo::smtp_ssl: false
+odoo::smtp_user: ''
+odoo::smtp_password: ''
 
-addons_path: '${install_path}/addons,{install_path}/odoo/addons'
-odoo_executable: "${install_path}/odoo-bin"
-home_path: /home
-log_level: debug
-logdir: /var/log/odoo
-logfile: "${logdir}/server.log"
-logrotate: 0
+odoo::addons_path: "%{lookup('odoo::install_path')}/addons,%{lookup('odoo::install_path')}/odoo/addons"
+odoo::odoo_executable: "%{lookup('odoo::install_path')}/odoo-bin"
+odoo::home_path: '/home'
+odoo::log_level: info
+odoo::logdir: '/var/log/odoo'
+odoo::pidpath: '/var/log/odoo'
+odoo::logfile: "%{lookup('odoo::logdir')}/server.log"
+odoo::logrotate: 0
 
-data_dir: '/data'
-proxy_mode: false
+odoo::data_dir: '/data'
+odoo::proxy_mode: false
 
 # comma separeted list
-lang: fi_FI
+odoo::lang: 'fi_FI'
 
-script_path: '/opt/bin'
-scripts: 
+odoo::script_path: '/opt/bin'
+odoo::scripts: 
   - initdb
   - testdb  
 
-workers: 0
-limit_request: 8196
-limit_memory_soft: 671088640 # ~640MB
-limit_memory_hard: 805306368 # ~768MB
-limit_time_cpu: 60
-limit_time_real: 120
-max_cron_threads: 2
-psycogreen_version: 1.0
-odoo_version: 11.0
+odoo::workers: 0
+odoo::limit_request: 8196
+odoo::limit_memory_soft: 671088640 # ~640MB
+odoo::limit_memory_hard: 805306368 # ~768MB
+odoo::limit_time_cpu: 60
+odoo::limit_time_real: 120
+odoo::max_cron_threads: 2
+odoo::psycogreen_version: '1.0'
+
+
 

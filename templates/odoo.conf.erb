@@ -1,27 +1,27 @@
 [options]
-admin_passwd = <%= @admin_password %>
-db_host = <%= @db_host %>
-db_port = <%= @db_port %>
-db_user = <%= @db_user %>
-db_name = <%= @db_name %>
-db_password = <%= @db_password %>
-<% if @list_db -%>
-list_db = <%= @list_db %>
+admin_passwd = <%= scope['odoo::admin_password'] %>
+db_host = <%= scope['odoo::db_host'] %>
+db_port = <%= scope['odoo::db_port'] %>
+db_user = <%= scope['odoo::db_user'] %>
+db_name = <%= scope['odoo::db_name'] %>
+db_password = <%= scope['odoo::db_name'] %>
+<% if scope['odoo::listdb'] -%>
+list_db = <%= scope['odoo::listdb'] -%>
 <% end -%>
-<% if @without_demo -%>
-without-demo = <%= @without_demo %>
+<% if scope['odoo::without_demo'] -%>
+without-demo = <%= scope['odoo::without_demo'] %>
 <% end -%>
-<% if @lang -%>
-lang = <%= @lang %>
+<% if scope['odoo::lang'] -%>
+lang = <%= scope['odoo::lang'] %>
 <% end -%>
-<% if @db_filter -%>
-db_filter = <%= @db_filter %>
+<% if scope['odoo::db_filter'] -%>
+db_filter = <%= scope['odoo::db_filter'] %>
 <% end -%>
 <% if @addons_path -%>
-addons_path = <%= @addons_path %>
+addons_path = <%= scope['odoo::addons_path'] %>
 <% end -%>
-<% if @logfile -%>
-logfile = <%= @logfile %>
+<% if scope['odoo::logfile'] -%>
+logfile = <%= scope['odoo::logfile'] %>
 <% end -%>
 <% if @log_level -%>
 log_level = <%= @log_level %>
@@ -29,8 +29,8 @@ log_level = <%= @log_level %>
 <% if @logrotate -%>
 logrotate = <%= @logrotate %>
 <% end -%>
-<% if @data_dir -%>
-data_dir = <%= @data_dir %>
+<% if scope['odoo::datadir'] -%>
+data_dir = <%= scope['odoo::datadir'] %>
 <% end -%>
 <% if @workers -%>
 workers = <%= @workers %>

@@ -8,13 +8,21 @@
   "project_page": "https://github.com/bhaymore/odoo_module",
   "issues_url": "https://github.com/bhaymore/odoo_module/issues",
   "description": "This module can be used to setup Odoo",
-  "operatingsystem_support": {
+  "operatingsystem_support": [ 
+    {
       "operatingsystem": "Debian",
-      "operatingsystemrelease": "8.2"
-    },
+      "operatingsystemrelease": "10.0"
+    }
+  ]
   "dependencies": [
-    {"name":"puppetlabs-vcsrepo","version_requirement":">= 1.3.0"},
-    {"name":"stankevich-python","version_requirement":">= 1.9.4"}
+    {
+    "name": "puppetlabs/stdlib",
+    "version_requirement": ">= 4.25.0 <7.0.0"
+    },
+    {
+    "name": "puppetlabs-vcsrepo",
+    "version_requirement": ">= 1.3.0"
+    }
   ]
 }
 

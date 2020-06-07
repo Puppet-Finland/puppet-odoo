@@ -1,0 +1,22 @@
+---
+odoo::dependency_packages:
+  - python3-dev
+  - libxml2-dev
+  - libxslt1-dev
+  - libldap2-dev
+  - libsasl2-dev
+  - postgresql
+  - postgresql-client 
+  - python3-psycopg2
+
+odoo::fontconfig_dependency_packages:
+  - libfontconfig1
+
+odoo::wkhtmltox_dependency_packages:
+  - fontconfig
+  - libxrender1
+  - xfonts-75dpi
+  - xfonts-base
+
+odoo::wkhtmltox_source: 'https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.5/wkhtmltox_0.12.5-1.stretch_amd64.deb'
+

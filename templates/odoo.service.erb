@@ -2,12 +2,12 @@
 Description=Advanced OpenSource ERP and CRM server
 
 [Service]
-User=<%= scope['odoo::params::odoo_user'] %>
-Group=<%= scope['odoo::params::odoo_group'] %>
+User=<%= scope['odoo::odoo_user'] %>
+Group=<%= scope['odoo::odoo_group'] %>
 Type=simple
 SyslogIdentifier=odoo
-PIDFile=/var/run/odoo/server.pid
-ExecStart=/opt/odoo/odoo-bin -c /etc/odoo.conf --no-database-list --db-filter=<%= scope['odoo::params::db_filter'] %>
+PIDFile=<%= scope['odoo::pidpath'] %>/server.pid
+ExecStart=<%= scope['odoo::odoo_executable'] %> -c /etc/odoo.conf --no-database-list --db-filter=<%= scope['odoo::db_filter'] %>
 ExecStop=/bin/kill $MAINPID
 
 [Install]

@@ -1,0 +1,24 @@
+odoo::dependency_packages:
+ - ca-certificates 
+ - curl 
+ - dirmngr 
+ - fonts-noto-cjk 
+ - gnupg 
+ - libssl-dev 
+ - node-less 
+ - npm 
+ - python3-num2words 
+ - python3-pip 
+ - python3-phonenumbers 
+ - python3-pyldap 
+ - python3-qrcode 
+ - python3-renderpm 
+ - python3-setuptools 
+ - python3-slugify 
+ - python3-vobject 
+ - python3-watchdog 
+ - python3-xlrd 
+ - python3-xlwt 
+ - xz-utils 
+odoo::wkhtmltox_source: 'https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.5/wkhtmltox_0.12.5-1.stretch_amd64.deb'
+

@@ -1,11 +1,9 @@
 # == Class: odoo::install
 #
-# Private class
-
 class odoo::service inherits odoo {
 
   assert_private()
-  
+
   case $::operatingsystem {
     'Debian': {
 
@@ -31,6 +29,6 @@ class odoo::service inherits odoo {
 
     default: {
       fail("${::operatingsystem} is not supported at this time")
-      }
     }
   }
+}
