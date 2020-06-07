@@ -3,17 +3,18 @@
   "version": "0.1.0",
   "author": "Petri Lammi",
   "summary": "Install Odoo from source.",
-  "license": "Apache 2.0",
-  "source": "https://github.com/bhaymore/odoo_module.git",
-  "project_page": "https://github.com/bhaymore/odoo_module",
-  "issues_url": "https://github.com/bhaymore/odoo_module/issues",
-  "description": "This module can be used to setup Odoo",
+  "license": "Apache-2.0",
+  "source": "https://github.com/Puppet-Finland/puppet-odoo",
+  "project_page": "https://github.com/Puppet-Finland/puppet-odoo",
+  "issues_url": "https://github.com/Puppet-Finland/puppet-odoo/issues",
   "operatingsystem_support": [ 
     {
-      "operatingsystem": "Debian",
-      "operatingsystemrelease": "10.0"
+    "operatingsystem": "Debian",
+    "operatingsystemrelease": [ 
+      "10.0"
+    ]
     }
-  ]
+  ],
   "dependencies": [
     {
     "name": "puppetlabs/stdlib",
