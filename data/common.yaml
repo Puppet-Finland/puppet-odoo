@@ -30,7 +30,7 @@ odoo::odoo_executable: "%{lookup('odoo::install_path')}/odoo-bin"
 odoo::home_path: '/home'
 odoo::log_level: info
 odoo::logdir: '/var/log/odoo'
-odoo::pidpath: '/var/log/odoo'
+odoo::pidpath: '/var/run/odoo'
 odoo::logfile: "%{lookup('odoo::logdir')}/server.log"
 odoo::logrotate: 0
 
